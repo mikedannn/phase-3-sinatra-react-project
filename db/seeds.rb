@@ -8,23 +8,11 @@ puts "🌱 Seeding spices..."
         full_name: Faker::Name.name,
         username: Faker::Internet.user('username'),
         password: Faker::Internet.password(min_length: 8, max_length: 12),
-        date_of_birth: Faker::Date.birthdate({ min: 18, max: 65, mode: 'age' })
+        date_of_birth: Faker::Date.birthday
     )
 end
 
 puts "Creating Users..."
-
-30.times do 
-    Trip.create(
-        user_id: User.all.sample.id,
-        destination_id: Destination.all.sample.id,
-        start_date: Faker::Date.future(3),
-        end_date: Faker::Date.future(5),
-        trip_notes: Faker::Quote.yoda
-    )
-end
-
-puts "Creating Trips..."
 
 40.times do 
     Destination.create(
@@ -35,6 +23,20 @@ puts "Creating Trips..."
 end
 
 puts "Creating Destinations..."
+
+30.times do 
+    Trip.create(
+        user_id: User.pluck(:id).sample,
+        destination_id: Destination.all.sample.id,
+        start_date: Faker::Date.between(from: '2022-12-23', to: '2024-09-25'),
+        end_date: Faker::Date.between(from: '2024-09-28', to: '2025-09-25'),
+        trip_notes: Faker::Quote.yoda
+    )
+end
+
+puts "Creating Trips..."
+
+
 
 
 puts "✅ Done seeding!"
