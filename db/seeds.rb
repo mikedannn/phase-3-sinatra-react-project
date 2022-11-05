@@ -4,6 +4,7 @@ require 'faker'
 puts "🌱 Seeding spices..."
 
 8.times do 
+
     User.create(
         full_name: Faker::Name.name,
         username: Faker::Internet.user('username'),
@@ -15,6 +16,7 @@ end
 puts "Creating Users..."
 
 40.times do 
+
     Destination.create(
         city_name: Faker::Address.city,
         country_name: Faker::Address.country,
