@@ -7,7 +7,7 @@ puts "🌱 Seeding spices..."
 
     User.create(
         full_name: Faker::Name.name,
-        username: Faker::Internet.user('username'),
+        username: Faker::Internet.username,
         password: Faker::Internet.password(min_length: 8, max_length: 12),
         date_of_birth: Faker::Date.birthday
     )
