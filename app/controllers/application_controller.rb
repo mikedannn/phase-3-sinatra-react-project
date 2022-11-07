@@ -39,7 +39,11 @@ class ApplicationController < Sinatra::Base
 
   get "/trips" do 
     trips = Trip.all
-    trips.to_json
+    trips.to_json(only: [:id, :user_id, :destination_id, :trip_notes], include: {
+      user: { only: [:full_name, :username], include: {
+        destinations: { only: [:city_name, :country_name]}
+      }}}
+    )
   end
 
 end
