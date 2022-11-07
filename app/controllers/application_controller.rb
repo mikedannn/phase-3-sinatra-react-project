@@ -1,7 +1,8 @@
+require 'pry'
+
 class ApplicationController < Sinatra::Base
-  set default_content_type: "application/json"
+  set :default_content_type, 'application/json'
   
-  # Add your routes here
   get "/" do
     { message: "Good luck with your project!" }.to_json
   end
@@ -15,18 +16,17 @@ class ApplicationController < Sinatra::Base
 
   get "/users/:id" do
     user = User.find(params[:id])
-    user.to_json(include: :trips)
+    user.to_json
   end
 
-  # post "/users" do 
-  #   user = User.create(
-  #     full_name:
-  #     username:
-  #     password:
-  #     date_of_birth:
-  #   )
-  #   user.to_json
-  # end
+  post "/users" do
+    user = User.create(
+      full_name: params[:full_name],
+      username: params[:username],
+      password: params[:password]
+    )
+    user.to_json
+  end
 
   ## DESTINATION
 
