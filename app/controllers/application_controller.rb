@@ -47,4 +47,6 @@ class ApplicationController < Sinatra::Base
     user.to_json(include: [:destination, :user])
   end
 
+  
+
 end
