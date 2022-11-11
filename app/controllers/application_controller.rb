@@ -47,6 +47,15 @@ class ApplicationController < Sinatra::Base
     user.to_json(include: [:destination, :user])
   end
 
-  
+  post "/trips" do 
+    trip = Trip.create(
+      user_id: params[:user_id],
+      destination_id: params[:destination_id],
+      start_date: params[:start_date],
+      end_date: params[:end_date],
+      trip_notes: params[:trip_notes]
+    )
+    trip.to_json
+  end
 
 end
