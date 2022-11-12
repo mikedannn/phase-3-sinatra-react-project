@@ -18,9 +18,7 @@ puts "Creating Users..."
 40.times do 
 
     Destination.create(
-        city_name: Faker::Address.city,
-        country_name: Faker::Address.country,
-        image_url: Faker::LoremFlickr.image(size: "50x60", search_terms: ['travel', 'country'])
+        destination_name: Faker::Address.city
     )
 end
 

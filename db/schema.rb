@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_04_235932) do
+ActiveRecord::Schema.define(version: 2022_11_12_220043) do
 
   create_table "destinations", force: :cascade do |t|
-    t.string "city_name"
-    t.string "country_name"
-    t.string "image_url"
+    t.string "destination_name"
   end
 
   create_table "trips", force: :cascade do |t|
