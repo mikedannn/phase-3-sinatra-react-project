@@ -58,4 +58,10 @@ class ApplicationController < Sinatra::Base
     trip.to_json
   end
 
+  delete '/trips/:id' do 
+    trip = Trip.find(params[:id])
+    trip.destroy
+    trip.to_json
+  end
+
 end
