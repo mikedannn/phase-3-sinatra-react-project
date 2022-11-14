@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
 
   get "/destinations" do 
     destinations = Destination.all
-    destinations.to_json
+    destinations.to_json(include: [:users])
   end
 
   ## TRIP
@@ -57,6 +57,8 @@ class ApplicationController < Sinatra::Base
     )
     trip.to_json(include: [:destination, :user])
   end
+
+
 
   delete '/trips/:id' do 
     trip = Trip.find(params[:id])
