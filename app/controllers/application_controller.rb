@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
 
   get "/users" do
     users = User.all
-    users.to_json
+    users.to_json(include: [:destinations])
   end
 
   get "/users/:id" do
@@ -55,7 +55,7 @@ class ApplicationController < Sinatra::Base
       end_date: params[:end_date],
       trip_notes: params[:trip_notes]
     )
-    trip.to_json
+    trip.to_json(include: [:destination, :user])
   end
 
   delete '/trips/:id' do 
