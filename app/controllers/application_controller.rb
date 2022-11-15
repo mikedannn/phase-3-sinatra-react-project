@@ -58,7 +58,17 @@ class ApplicationController < Sinatra::Base
     trip.to_json(include: [:destination, :user])
   end
 
-
+  patch '/trips/:id' do
+    review = Trip.find(params[:id])
+    trip.update(
+      user_id: params[:user_id],
+      destination_id: params[:destination_id],
+      start_date: params[:start_date],
+      end_date: params[:end_date],
+      trip_notes: params[:trip_notes]
+    )
+    trip.to_json
+  end
 
   delete '/trips/:id' do 
     trip = Trip.find(params[:id])
