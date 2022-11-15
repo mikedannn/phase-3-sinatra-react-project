@@ -67,7 +67,7 @@ class ApplicationController < Sinatra::Base
       end_date: params[:end_date],
       trip_notes: params[:trip_notes]
     )
-    trip.to_json
+    trip.to_json(include: [:destination, :user])
   end
 
   delete '/trips/:id' do 
