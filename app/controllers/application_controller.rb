@@ -59,7 +59,7 @@ class ApplicationController < Sinatra::Base
   end
 
   patch '/trips/:id' do
-    review = Trip.find(params[:id])
+    trip = Trip.find(params[:id])
     trip.update(
       user_id: params[:user_id],
       destination_id: params[:destination_id],
