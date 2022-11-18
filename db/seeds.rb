@@ -27,7 +27,7 @@ puts "Creating Destinations..."
 30.times do 
     Trip.create(
         user_id: User.pluck(:id).sample,
-        destination_id: Destination.all.sample.id,
+        destination_id: Destination.pluck(:id).sample,
         start_date: Faker::Date.between(from: '2022-12-23', to: '2024-09-25'),
         end_date: Faker::Date.between(from: '2024-09-28', to: '2025-09-25'),
         trip_notes: Faker::Quote.yoda

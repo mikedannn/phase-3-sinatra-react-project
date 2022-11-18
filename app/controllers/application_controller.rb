@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
 
   get "/users" do
     users = User.all
-    users.to_json(include: [:destinations])
+    users.to_json(include: [:destinations, :trips])
   end
 
   get "/users/:id" do
